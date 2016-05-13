@@ -12,6 +12,8 @@ gem 'haml'
 gem 'simple_form'
 gem 'kaminari'
 
+gem 'cancancan', '~> 1.10'
+
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -26,6 +28,7 @@ gem 'rolify'
 gem 'pg'
 
 gem 'devise'
+gem 'rolify'
 
 
 group :development, :test do
