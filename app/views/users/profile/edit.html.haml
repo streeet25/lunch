@@ -2,8 +2,13 @@
 
 = simple_form_for current_user, url: users_profile_path do |f|
   = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
 
   = f.simple_fileds_for :profile do |pf|
-    = pf.input :first_name
-    = pf.input :last_name
-  = f.submit 'Save'
+    .form-inputs
+      = pf.input :first_name
+    .form-inputs
+      = pf.input :last_name
+  .form-actions
+    = f.submit 'Save'
