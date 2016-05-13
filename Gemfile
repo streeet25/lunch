@@ -21,6 +21,8 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 
+gem 'rolify'
+
 gem 'pg'
 
 gem 'devise'
