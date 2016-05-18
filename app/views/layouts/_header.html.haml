@@ -1,0 +1,13 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  .container
+    = link_to image_tag("logo.png", alt: "logo", class: "logo"), root_path
+    %nav
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Dashboard", root_path
+        - if signed_in?
+          %li= link_to "Настройки", edit_users_profile_path
+          %li= link_to 'Выйти', destroy_user_session_path, :method => :delete
+          - if signed_in? && current_user.has_role?(:admin)
+            %li= link_to "Admins pages", '#'
+        - else
+          %li= link_to "Войти", new_user_session_path

@@ -25,10 +25,10 @@ gem 'turbolinks'
 
 gem 'rolify'
 
-gem 'pg'
-
 gem 'devise'
 gem 'rolify'
+
+gem 'simple_calendar', '~> 2.0'
 
 
 group :development, :test do
