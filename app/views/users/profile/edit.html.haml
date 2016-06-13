@@ -4,10 +4,9 @@
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
+  = f.input :name, label: 'First Name'
 
-  = f.simple_fileds_for :profile do |pf|
-    .form-inputs
-      = pf.input :first_name
+  = f.simple_fields_for :profile do |pf|
     .form-inputs
       = pf.input :last_name
   .form-actions

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: :index, controller: :dashboard
 
+  resources :orders
+
   namespace :users do
     resource :profile, only: [:edit, :update], controller: :profile
   end
