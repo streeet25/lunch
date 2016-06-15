@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :orders
 
   namespace :users do
-    resource :profile, only: [:edit, :update], controller: :profile
+    resource 		:profile, only: [:edit, :update], controller: :profile
+    resources 	:orders, only: [:index, :new, :create]
   end
 end
