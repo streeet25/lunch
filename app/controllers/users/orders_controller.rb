@@ -13,8 +13,10 @@ class Users::OrdersController < Users::BaseController
 
     if @order.save
       redirect_to root_path
+      flash[:success] = 'Your order successfully sent'
     else
       render :new
+      flash[:error] = 'Something goes wrong.'
     end
 
   end

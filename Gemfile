@@ -23,8 +23,6 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 
-gem 'rolify'
-
 gem 'devise'
 gem 'rolify'
 
@@ -53,6 +51,5 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'spring'
 end
 
