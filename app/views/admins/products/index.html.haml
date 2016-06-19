@@ -1,0 +1,21 @@
+%h1 Products
+  = link_to 'Add product', new_admins_product_path, :class => "btn btn-success right"
+.margin-top-10
+  - if @products.present?
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Price
+          %th Category
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= product.name
+            %td= product.price
+            %td= product.category_name
+            %td
+              = link_to "Edit", edit_admins_product_path(product), :class => 'btn btn-success btn-xs'
+              = link_to "Destroy", admins_product_path(product), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'
+  - else
+    %h1.rating-h1 You don't have products now.

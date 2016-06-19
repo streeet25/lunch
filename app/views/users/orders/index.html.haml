@@ -1,0 +1,17 @@
+%h1 My Orders
+= link_to 'Add orders', new_users_order_path, :class => "btn btn-success right"
+.margin-top-10
+  - if @orders.present?
+    %table
+      %thead
+        %tr
+          %th total
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td= order.total
+            %td
+              = link_to "Edit", edit_my_rating_path(rating), :class => 'btn btn-success btn-xs'
+              = link_to "Destroy", my_rating_path(rating), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'
+  - else
+    %h1.rating-h1 You don't have orders now.

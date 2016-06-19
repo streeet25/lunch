@@ -5,11 +5,9 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: :index, controller: :dashboard
 
-  resources :orders
-
   namespace :users do
     resource 		:profile, only: [:edit, :update], controller: :profile
-    resources 	:orders, only: [:index, :new, :create]
+    resources 	:orders, only: [:index, :new, :create, :show]
   end
 
   namespace :admins do

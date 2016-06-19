@@ -50,5 +50,4 @@ class Admins::ProductsController <  Admins::BaseController
   def find_product
     @product = Product.find(params[:id])
   end
-  helper_method :find_product
 end

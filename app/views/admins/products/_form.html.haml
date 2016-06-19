@@ -1,0 +1,7 @@
+.container
+  .form-group
+= simple_form_for [:admins, product], html: { multipart: true } do |f|
+  = f.input :name
+  = f.input :category, options_for_select(Category.all.map{|category| [category.id, category.name]}, @product.category)
+  = f.input :price
+  = f.submit "Save", :class => "btn-xs btn-success rating-submit-btn margin-rating-form"
