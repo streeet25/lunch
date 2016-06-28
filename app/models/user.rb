@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
 
   rolify
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   after_create :create_user_profile
@@ -18,6 +16,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   delegate :first_name, :last_name, to: :profile, allow_nil: true, controller: :profile
+
+  validates :name, presence: true
 
   def create_user_profile
     return if profile.present?

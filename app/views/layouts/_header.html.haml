@@ -4,13 +4,11 @@
     %nav
       %ul.nav.navbar-nav.navbar-right
         - if signed_in?
-          %li
-            %span= current_user.name
-        %li= link_to "Dashboard", root_path
-        - if signed_in?
+          %li= link_to current_user.name, edit_users_profile_path
+          %li= link_to "Dashboard", root_path
           %li= link_to "Настройки", edit_users_profile_path
           %li= link_to 'Выйти', destroy_user_session_path, :method => :delete
-          - if signed_in? && current_user.has_role?(:admin)
+          - if current_user.has_role?(:admin)
             %li= link_to "Admins pages", '#'
         - else
           %li= link_to "Войти", new_user_session_path
