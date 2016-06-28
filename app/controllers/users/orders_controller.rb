@@ -1,6 +1,8 @@
 class Users::OrdersController < Users::BaseController
   def index
-    @order= current_user.orders
+    @weekday = params[:weekday].to_date.strftime('%A') if params[:weekday]
+    @daymenu = Weekday.find_by_name(@weekday)
+    @date = params[:weekday]
   end
 
   def new
@@ -8,11 +10,11 @@ class Users::OrdersController < Users::BaseController
   end
 
   def create
-    @order = current_user.orders.build(order_params)
-    @order.items << Item.where(id: params[:product_ids])
+    @order = current_user.orders.build
+    @order.products << Product.where(id: params[:product_ids])
 
     if @order.save
-      redirect_to root_path
+      redirect_to users_order_path(@order)
       flash[:success] = 'Your order successfully sent'
     else
       render :new
@@ -23,11 +25,4 @@ class Users::OrdersController < Users::BaseController
   def show
     @order = current_user.orders.find(params[:id])
   end
-
-  private
-
-  def order_params
-    params.require(:order).permit(:user_id, :total)
-  end
-
 end

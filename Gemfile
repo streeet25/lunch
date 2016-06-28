@@ -26,9 +26,6 @@ gem 'turbolinks'
 gem 'devise'
 gem 'rolify'
 
-gem 'simple_calendar', '~> 2.0'
-
-
 group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails'

@@ -1,0 +1,7 @@
+= simple_form_for [:users, order] do |f|
+
+  - Category.all.each do |category|
+    = category.name
+    = select_tag(:product_ids, options_from_collection_for_select(Weekday.find_products(category), :id, :name_price),  class: "form-control", multiple: true)
+
+  = f.button :submit

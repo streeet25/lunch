@@ -65,3 +65,47 @@ header .logo {
 header .navbar-right {
   margin-right:0px;
 }
+
+/* dashboard */
+
+.weekday{
+    width:120px;
+    border:1px solid #eee;
+    float:left;
+    margin-left: 25px;
+
+    &:hover{
+      background: #eee;
+    }
+  }
+  .weekday.weekday_active{
+      background: #dff0d8;
+  }
+
+.day {
+  // padding: 5px;
+  margin-top: 5px;
+  // border: 1px solid #E1E1E1;
+  // border-radius: 4px;
+  text-align: center;
+  .date {
+    background-color: #ffffff;
+    font-size: 12px;
+  }
+  .wday {
+    width: auto;
+    background-color: #848484;
+    color: #F6F6F6;
+    font-size: 25px;
+    font-family: Helvetica;
+    font-weight: bold;
+  }
+  .today {
+    background-color: #449D44
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
+

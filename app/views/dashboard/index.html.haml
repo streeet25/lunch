@@ -1,2 +1,10 @@
-= week_calendar do |date|
-  - date
+.container
+  .row
+    - for i in 0..6
+      - weekdays = @date + i.day
+      = link_to users_orders_path(:weekday => weekdays.strftime("%d-%m-%Y")), class: "weekday" + (" weekday_active" if weekdays == Date.today).to_s do
+        .panel.panel-default.day
+        .panel-heading.date
+          = weekdays.strftime("%A")
+        .panel-body.wday
+          = weekdays.strftime("%d.%m.%Y")

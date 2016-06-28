@@ -1,0 +1,17 @@
+%h1 Order details
+- if @order.present?
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title Order info
+    %table.table
+      %thead
+        %tr
+          %th First course
+          %th Main course
+          %th Drinks
+          %th Total
+      %tbody
+        - Category.all.each do |category|
+          - @order.products.where(category: category).each do |p|
+            %td= p.name
+        %td= @order.total
