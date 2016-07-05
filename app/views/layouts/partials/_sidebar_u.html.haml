@@ -1,0 +1,15 @@
+/ Left side column. contains the logo and sidebar
+%aside.main-sidebar
+  %ul.sidebar-menu
+    %li.header USER NAVIGATION
+    %li.active
+      = link_to edit_users_profile_path do
+        %i.fa.fa-calendar
+        %span Profile
+    %li
+      = link_to root_path do
+        %i.fa.fa-list
+        %span Dashboard
+
+/ /.sidebar
+/ Content Wrapper. Contains page content

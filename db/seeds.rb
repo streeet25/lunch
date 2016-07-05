@@ -1,5 +1,5 @@
 User.delete_all
-user = User.create! id: 1, name: 'Admin', email: '123456@gmail.com', :password => '123456', :password_confirmation => '123456'
+user = User.create! name: 'Admin', email: '123456@gmail.com', :password => '123456', :password_confirmation => '123456'
 
 Category.delete_all
 categories = Category.create([

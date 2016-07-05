@@ -1,0 +1,31 @@
+%h1 Orders
+= search_form_for @search, :url =>admins_orders_path do |f|
+  %span Search by
+  .field
+    = f.label :user_name_cont, "User name"
+    = f.text_field :user_name_cont, placeholder: "Jhon"
+    %br/
+    = f.label :created_at_casted_date_equals, "Date"
+    = f.text_field :created_at_casted_date_equals, placeholder: "yyyy-mm-dd"
+    %br/
+    = f.label :total_gteq, "Total beetwen"
+    = f.text_field :total_gteq, placeholder: "0"
+    = f.label :total_lteq, "and"
+    = f.text_field :total_lteq, placeholder: "999"
+    .actions= f.submit "Search"
+%table
+  %thead
+    %tr
+      %th id
+      %th= sort_link @search, :user_name, "Username"
+      %th= sort_link @search, :total, "Total"
+      %th= sort_link @search, :created_at, "Created at"
+      %th Actions
+  %tbody
+    - @orders.each do |o|
+      %tr
+        %td= o.id                |
+        %td= o.user_name
+        %td= o.total
+        %td= o.created_at
+        %td= link_to "Destroy", admins_order_path(o), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'

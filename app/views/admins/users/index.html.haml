@@ -1,0 +1,21 @@
+.margin-top-10
+  - if @users.present?
+    %table
+      %thead
+        %tr
+          %th First name
+          %th Last name
+          %th Email
+          %th Joined
+          %th Actions
+      %tbody
+        - @users.each do |u|
+          %tr
+            %td= link_to u.name, edit_admins_user_path(u)
+            %td= u.last_name
+            %td= u.email
+            %td= u.updated_at
+            %td
+              = link_to "Destroy", edit_users_profile_path(u), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'
+  - else
+    %h1.rating-h1 0 users registered.

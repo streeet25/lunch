@@ -1,5 +1,16 @@
+ /*
+ *= require skins/skin-blue
+  *= require skins/skin-red-light
+ *= require iCheck/flat/blue
+ *= require AdminLTE
+ *= require_self
+ *= require_tree .
+ */
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 /* mixins, variables, etc. */
 
@@ -26,6 +37,50 @@ textarea {
     margin-bottom: 10px;
   }
 }
+
+table {
+  width:100%;
+  border-collapse:inherit;
+  border-bottom:1px solid #E5E5E5;
+  border-top:1px solid #E5E5E5;
+  margin-bottom:20px;
+  line-height:20px;
+}
+table td {
+ padding:8px 10px;
+  border-right:1px solid #E5E5E5;
+  border-left:1px solid #E5E5E5;
+}
+table tr:hover {
+  background-color:#E6E5FF;
+}
+table th {
+  padding: 8px 5px;
+  color: #1f1f1f;
+  text-align: left;
+  border-right: 1px solid #E5E5E5;
+  font-weight: normal;
+  background: #efefef;
+}
+table tr {
+  border-left:1px solid #E5E5E5;
+  border-top:1px solid #E5E5E5;
+}
+tr:nth-child(odd) {
+  background-color:#CCC;
+}
+
+aside {
+  float:left;
+}
+
+section {
+  margin: 0 auto;
+  float:right;
+  width:1050px;
+  padding-right:7px;
+}
+
 
 /* typography */
 
@@ -69,10 +124,11 @@ header .navbar-right {
 /* dashboard */
 
 .weekday{
+    margin-top: 10px;
     width:120px;
     border:1px solid #eee;
     float:left;
-    margin-left: 25px;
+    margin-left: 20px;
 
     &:hover{
       background: #eee;

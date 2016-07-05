@@ -26,6 +26,10 @@ gem 'turbolinks'
 gem 'devise'
 gem 'rolify'
 
+gem 'font-awesome-rails'
+
+gem 'ransack'
+
 group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails'

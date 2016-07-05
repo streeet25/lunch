@@ -1,0 +1,14 @@
+.container
+  .form-group
+    = simple_form_for [:admins, @user], html: { multipart: true } do |f|
+      = f.input :name, label: 'First name'
+      = f.simple_fields_for :profile do |pf|
+        .form-inputs
+          = pf.input :last_name
+      = f.input :email
+      = f.submit "Save", :class => "btn-xs btn-success rating-submit-btn margin-rating-form"
+
+
+
+
+

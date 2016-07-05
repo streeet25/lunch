@@ -6,33 +6,26 @@ class Order < ActiveRecord::Base
 
   before_create :set_total!
 
+  validate :validate_products
+
+  def validate_products
+    unless products.map(&:category_id).uniq.length == products.map(&:category_id).length && products.size == 3
+      errors.add :products, 'Please select one product from each category'
+    end
+  end
+
+  def user_name
+    user.name
+  end
+
+  ransacker :created_at_casted do |parent|
+    Arel.sql('date(orders.created_at)')
+  end
+
   private
 
   def set_total!
     self.total = products.map(&:price).sum
-  end
-
-  def self.getOrders
-    date = Date.today
-    @orders = Order.where(created_at: date..date.end_of_day)
-    @orders.to_json
-  end
-
-  def self.find_orders(date_params)
-    if date_params
-      date = date_params.to_date
-    else
-      date = Date.today
-    end
-    Order.where(created_at: date..date.end_of_day).order(id: :desc) if date.present?
-  end
-
-  def self.date_orders(date_params)
-    if date_params
-      date = date_params.to_date
-    else
-      date = Date.today
-    end
   end
 
   def self.total_orders(orders)

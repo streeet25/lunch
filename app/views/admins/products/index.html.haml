@@ -1,5 +1,5 @@
 %h1 Products
-  = link_to 'Add product', new_admins_product_path, :class => "btn btn-success right"
+= link_to 'Add product', new_admins_product_path, :class => "btn btn-success right"
 .margin-top-10
   - if @products.present?
     %table
@@ -8,6 +8,7 @@
           %th Name
           %th Price
           %th Category
+          %th Actions
       %tbody
         - @products.each do |product|
           %tr
