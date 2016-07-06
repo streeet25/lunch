@@ -1,0 +1,23 @@
+%h1 #{@weekday.name} details
+- if @weekday.present?
+  .panel.panel-default
+    .panel-heading
+    %h3.text-center Weekday products
+    %table.table
+      %thead
+        %tr
+          %th Id
+          %th Category
+          %th Name
+          %th Price
+      %tbody
+        - @weekday.products.each do |w|
+          %tr
+            %td= w.id
+            %td= w.category_name
+            %td= w.name
+            %td= w.price
+- else
+  %h1.rating-h1 No inforamation given.
+
+

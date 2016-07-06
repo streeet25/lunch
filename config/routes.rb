@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources   :users, only: [:index, :edit, :update, :destroy]
     resources   :orders, only: [:index, :show, :destroy]
     resources   :products
+    resources   :weekdays
   end
 end

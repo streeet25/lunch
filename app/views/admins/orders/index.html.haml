@@ -24,8 +24,9 @@
   %tbody
     - @orders.each do |o|
       %tr
-        %td= o.id                |
-        %td= o.user_name
+        %td= link_to o.id, admins_order_path(o)
+        %td=  o.user_name
         %td= o.total
         %td= o.created_at
-        %td= link_to "Destroy", admins_order_path(o), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'
+        %td
+          = link_to "Destroy", admins_order_path(o), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'

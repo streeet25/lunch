@@ -1,0 +1,12 @@
+.container
+  .form-group
+= simple_form_for [:admins, @weekday], html: { multipart: true } do |f|
+  = f.input :name
+  -Category.all.each do |category|
+    =category.name
+    = f.association :products,
+      collection: Product.where(category: category){ |p| [p.name, p.id] },
+      as: :check_boxes,
+      checked: params[:products_id],
+      label: false
+  = f.submit "Save", :class => "btn-xs btn-success rating-submit-btn margin-rating-form"
