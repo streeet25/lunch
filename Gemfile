@@ -23,12 +23,15 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 
-gem 'devise'
 gem 'rolify'
 
 gem 'font-awesome-rails'
 
 gem 'ransack'
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'devise'
 
 group :development, :test do
   gem 'rubocop'
@@ -37,6 +40,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'pry'
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 group :test do

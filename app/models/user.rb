@@ -1,13 +1,17 @@
 class User < ActiveRecord::Base
+  include Omniauthable
+
   resourcify
 
   rolify
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
   after_create :create_user_profile
 
   after_create :assign_role!
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_one :profile, dependent: :destroy
 
@@ -18,6 +22,8 @@ class User < ActiveRecord::Base
   delegate :first_name, :last_name, to: :profile, allow_nil: true, controller: :profile
 
   validates :name, presence: true
+
+  private
 
   def create_user_profile
     return if profile.present?
