@@ -33,6 +33,9 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'devise'
 
+gem 'active_model_serializers'
+gem 'jwt'
+
 group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails'

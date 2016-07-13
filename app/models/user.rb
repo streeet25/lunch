@@ -5,8 +5,9 @@ class User < ActiveRecord::Base
 
   rolify
 
-  after_create :create_user_profile
+  before_save  :ensure_authentication_token
 
+  after_create :create_user_profile
   after_create :assign_role!
 
   devise :database_authenticatable, :registerable,
@@ -37,6 +38,19 @@ class User < ActiveRecord::Base
       add_role(:admin)
     else
       add_role(:user)
+    end
+  end
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.exists?(authentication_token: token)
     end
   end
 end

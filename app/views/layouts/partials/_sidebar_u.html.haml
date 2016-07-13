@@ -3,13 +3,12 @@
   %ul.sidebar-menu
     %li.header USER NAVIGATION
     %li.active
-      = link_to edit_users_profile_path do
-        %i.fa.fa-calendar
-        %span Profile
-    %li
       = link_to root_path do
         %i.fa.fa-list
         %span Dashboard
-
+    %li
+      = link_to edit_users_profile_path do
+        %i.fa.fa-calendar
+        %span Profile
 / /.sidebar
 / Content Wrapper. Contains page content

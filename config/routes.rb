@@ -1,3 +1,5 @@
+require 'api_constraints'
+
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: 'omniauth_callbacks' }
 
@@ -15,5 +17,13 @@ Rails.application.routes.draw do
     resources   :orders, only: [:index, :show, :destroy]
     resources   :products
     resources   :weekdays
+  end
+
+  namespace :api do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :orders, only: :index
+      resources :auth_tokens, only: :create
+      resources :users, only: :index
+    end
   end
 end
