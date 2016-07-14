@@ -1,7 +1,16 @@
+Organization.delete_all
+organizations = Organization.create([
+  { name: 'Microsoft' },
+  { name: 'Apple' },
+  { name: 'Xerox' },
+  ])
+
+
+
 User.delete_all
 user = User.create([
- {name: 'Admin', email: 'admin@gmail.com', :password => '123456', :password_confirmation => '123456'},
- {name: 'User', email: 'user@gmail.com', :password => '123456', :password_confirmation => '123456'}
+ {name: 'Admin', email: 'admin@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] },
+ {name: 'User', email: 'user@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] }
 
  ])
 
