@@ -5,8 +5,6 @@ organizations = Organization.create([
   { name: 'Xerox' },
   ])
 
-
-
 User.delete_all
 user = User.create([
  {name: 'Admin', email: 'admin@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] },

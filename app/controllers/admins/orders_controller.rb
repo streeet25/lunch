@@ -1,9 +1,11 @@
 class Admins::OrdersController < Admins::BaseController
   before_action :find_order , only: [:show, :destroy]
 
+  PER_PAGE = 10
+
   def index
     @search = Order.includes(:user).ransack(params[:q])
-    @orders = @search.result(distinct: false)
+    @orders = @search.result(distinct: false).page(params[:page]).per(params[:per_page] || PER_PAGE)
   end
 
   def show

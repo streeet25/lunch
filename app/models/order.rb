@@ -8,14 +8,12 @@ class Order < ActiveRecord::Base
 
   validate :validate_products
 
+  delegate :name, to: :order, prefix: true
+
   def validate_products
     unless products.map(&:category_id).uniq.length == products.map(&:category_id).length && products.size == 3
       errors.add :products, 'Please select one product from each category'
     end
-  end
-
-  def user_name
-    user.name
   end
 
   ransacker :created_at_casted do |parent|

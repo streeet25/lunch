@@ -1,8 +1,9 @@
 class Admins::ProductsController <  Admins::BaseController
   before_action :find_product , only: [:edit, :update, :destroy]
+  PER_PAGE = 10
 
   def index
-    @products = Product.order(:category_id)
+    @products = Product.order(:category_id).page(params[:page]).per(params[:per_page] || PER_PAGE)
   end
 
   def new

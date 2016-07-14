@@ -1,8 +1,10 @@
 class Admins::UsersController < Admins::BaseController
   before_action :find_user , only: [:edit, :update, :destroy]
 
+  PER_PAGE = 10
+
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(params[:per_page] || PER_PAGE)
   end
 
   def edit

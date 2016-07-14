@@ -17,5 +17,8 @@
             %td= u.updated_at
             %td
               = link_to "Destroy", edit_users_profile_path(u), :method => :delete, data: { :confirm => "Are you sure?" }, :class => 'btn btn-danger btn-xs'
+    .row
+      .col-md-offset-5
+        = paginate @users
   - else
     %h1.rating-h1 0 users registered.
