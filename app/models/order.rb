@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  resourcify
+
   belongs_to :user
 
   has_many :order_items

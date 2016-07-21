@@ -1,4 +1,6 @@
 class Weekday < ActiveRecord::Base
+  resourcify
+
   has_many :product_weekdays
   has_many :products, through: :product_weekdays, dependent: :destroy
 

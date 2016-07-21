@@ -9,8 +9,9 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     end
+
     if user.has_role? :user
-      can [:read, :create], Order
+      can [:create,:read], Order
     end
   end
 
