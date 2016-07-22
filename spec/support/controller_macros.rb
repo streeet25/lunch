@@ -2,7 +2,7 @@ module ControllerMacros
   def login_admin
     before(:each) do
       User.delete_all
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
       @logged_in_admin = FactoryGirl.create(:admin)
       sign_in @logged_in_admin
       allow(controller).to receive(:current_user).and_return(@logged_in_admin)

@@ -7,7 +7,6 @@ describe Admins::ProductsController do
   let!(:product) { FactoryGirl.create :product }
 
   describe "Get #index" do
-
     context "when user logged in" do
       before do
         @products = double
@@ -23,7 +22,7 @@ describe Admins::ProductsController do
         expect(response).to render_template('index')
       end
 
-      it "assign ratings as ratings" do
+      it "assign product as products" do
         expect(assigns(@products)).to eq(@products1)
       end
     end
@@ -59,15 +58,22 @@ describe Admins::ProductsController do
   end
 
   describe "POST 'create'" do
+
+     let(:product_double) { double("product_double")}
     context "when product was created" do
-      before do
-        @product = double(:save => true)
-        @products = double(:build => @products)
+      before(:each) do
+        Product.stub(:new).and_return(product_double)
+        product_double.stub(:save).and_return(true)
       end
 
-      it 'should redirect ' do
+      it "creates a new item" do
         do_request_product
-        expect(response).to redirect_to(admins_products_path)
+        expect(assigns(:product)).to be(product_double)
+      end
+
+      it "redirects to the correct url" do
+        do_request_product
+        expect(response).to redirect_to admins_products_path
       end
 
       it 'add message to notice' do
@@ -76,12 +82,11 @@ describe Admins::ProductsController do
       end
     end
 
-    context "when rating wasn't created" do
+    context "when product wasn't created" do
 
-      before do
-        allow(@logged_in_user).to receive(:products) { @products }
-        @product = double(:save => false)
-        @products = double(:build => @product)
+      before(:each) do
+        Product.stub(:new).and_return(product_double)
+        product_double.stub(:save).and_return(false)
       end
 
       it 'should render new' do
@@ -101,7 +106,101 @@ describe Admins::ProductsController do
     end
   end
 
+  describe "post 'edit'" do
+
+    @product= Product.create
+
+    it "finds a specific item" do
+      get :edit, id: product.id
+      expect(assigns(:product)).to eq(product)
+
+    end
+
+    it "is should return http status succes" do
+      get :edit, id: product.id
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+    describe "put 'update'"  do
+
+      before do
+        @products = double
+        allow(@logged_in_user).to receive(:products) { @products }
+        allow(@products).to receive(:find) { product }
+      end
+
+      it 'should assigns product to instance variable' do
+        do_request
+        expect(assigns(:product)).to eq(product)
+      end
+
+      context "when product was updated" do
+        before do
+          allow(product).to receive(:update_attributes) { true }
+        end
+
+        it 'should redirect to admins_products_path' do
+          do_request
+          expect(response).to redirect_to(admins_products_path)
+        end
+
+        it 'add message to notice' do
+          do_request
+          expect(flash[:success]).to eq('Product was successfully updated.')
+        end
+      end
+
+    context "when product wasn't updated" do
+      before do
+        allow(product).to receive(:update_attributes) { false }
+      end
+
+      it 'should render new' do
+        do_request
+        get :edit, id: product.id
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    def do_request
+      put 'update', { :id => product.id,  :product => { :name => 'example'  }}
+    end
+  end
+
+  describe "delete 'destroy'" do
+
+    before do
+      @products = double
+      allow(@logged_in_user).to receive(:products) { @products }
+      allow(@products).to receive(:find) { product }
+    end
+
+    it 'should assigns product to instance variable' do
+      do_request
+      expect(assigns(:product)).to eq(product)
+    end
+
+    context "when product was destroyed" do
+      before do
+        allow(product).to receive(:destroy) { true }
+      end
+
+      it 'add message to notice' do
+        do_request
+        expect(flash[:success]).to eq('Product was successfully destroyed.')
+      end
+    end
 
 
+    it 'should redirect to admins_products_path' do
+      do_request
+      expect(response).to redirect_to(admins_products_path)
+    end
+
+    def do_request
+      delete 'destroy', { :id => product.id }
+    end
+  end
 
 end

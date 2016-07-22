@@ -14,6 +14,9 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
+  config.mock_with :rspec do |mocks|
+    mocks.allow_message_expectations_on_nil = true
+  end
 
   config.order = "random"
   config.color = true

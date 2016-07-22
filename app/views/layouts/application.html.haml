@@ -15,7 +15,7 @@
     = render 'layouts/partials/header'
     - if current_user.try(:has_role?, :admin)
       = render 'layouts/partials/sidebar_a'
-    - else
+    - if current_user.try(:has_role?, :user)
       = render 'layouts/partials/sidebar_u'
     .content-wrapper
       - flash.each do |key, value|
