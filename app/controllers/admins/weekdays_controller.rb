@@ -2,7 +2,7 @@ class Admins::WeekdaysController <  Admins::BaseController
   before_action :find_weekday , only: [:edit, :update, :destroy, :show]
 
   def index
-    @weekdays = Weekday.all
+    @weekdays = Weekday.order(:id)
   end
 
   def new
@@ -21,7 +21,7 @@ class Admins::WeekdaysController <  Admins::BaseController
   end
 
   def edit
-    @product = Product.find(params[:id])
+
   end
 
   def update
@@ -37,7 +37,7 @@ class Admins::WeekdaysController <  Admins::BaseController
 
   def destroy
     @weekday.destroy
-    redirect_to admins_weekday_path
+    redirect_to admins_weekdays_path
     flash[:success] = 'Weekday was successfully destroyed.'
   end
 
@@ -52,6 +52,6 @@ class Admins::WeekdaysController <  Admins::BaseController
   end
 
   def weekday_params
-    params.require(:weekday).permit(:name)
+    params.require(:weekday).permit(:name, :date, product_ids: [])
   end
 end

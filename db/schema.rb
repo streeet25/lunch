@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20160714005033) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
+    t.string   "first_name"
     t.string   "authentication_token"
     t.integer  "organization_id"
   end
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160714005033) do
 
   create_table "weekdays", force: :cascade do |t|
     t.string   "name"
+    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

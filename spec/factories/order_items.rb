@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :product_weekday do
+  factory :order_item do
+    order
     product
-    weekday
   end
 end

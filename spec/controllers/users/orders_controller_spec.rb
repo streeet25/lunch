@@ -33,10 +33,6 @@ describe Users::OrdersController do
             expect assigns(:date) == DateTime.now
           end
 
-          it "should assert day menu for today" do
-            expect assigns(:weekday) == @weekday
-          end
-
           it "should assert orders for today date" do
             expect assigns(:orders) == Order.where(created_at: @date1.beginning_of_day..@date1.end_of_day)
           end
@@ -44,7 +40,7 @@ describe Users::OrdersController do
 
         context 'with date params' do
           it "renders the index template" do
-            get :index, date: @date2.strftime("%d-%m-%Y"), format: :html
+            get :index, date: @date2.strftime("%Y-%m-%d"), format: :html
             expect(response).to render_template("index")
           end
 

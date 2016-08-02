@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
   def index
-    @date = Date.today.at_beginning_of_week
+    @weekdays = Weekday.order(:date)
   end
 
   def show

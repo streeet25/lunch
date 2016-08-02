@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  delegate :first_name, :last_name, to: :profile, allow_nil: true, controller: :profile
+   delegate :last_name, to: :profile, allow_nil: true, controller: :profile
 
-  validates :name, presence: true
+  validates :first_name, presence: true
 
   private
 

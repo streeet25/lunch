@@ -7,8 +7,8 @@ organizations = Organization.create([
 
 User.delete_all
 user = User.create([
- {name: 'Admin', email: 'admin@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] },
- {name: 'User', email: 'user@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] }
+ {first_name: 'Admin', email: 'admin@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] },
+ {first_name: 'User', email: 'user@gmail.com', :password => '123456', :password_confirmation => '123456', organization: organizations.sample[1] }
 
  ])
 
@@ -47,10 +47,19 @@ drinks_products =   Product.create([
 ])
 
 Weekday.delete_all
-Weekday.create! id:1, name: "Monday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
-Weekday.create! id:2, name: "Tuesday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
-Weekday.create! id:3, name: "Wednesday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
-Weekday.create! id:4, name: "Thursday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
-Weekday.create! id:5, name: "Friday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
-Weekday.create! id:6, name: "Saturday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
-Weekday.create! id:7, name: "Sunday", products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3)
+weekdays = Weekday.create([
+    { name: "Monday", date:'01-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Tuesday", date:'02-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Wednesday", date:'03-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Thursday", date:'04-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Friday", date:'05-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Saturday", date:'06-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Sunday", date:'07-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Monday", date:'08-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Tuesday", date:'09-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Wednesday", date:'10-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Thursday", date:'11-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Friday", date:'12-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Saturday", date:'13-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+    { name: "Sunday", date:'14-2016-08', products:  first_course_products.sample(3) + main_course_products.sample(3) + drinks_products.sample(3) },
+])

@@ -12,6 +12,35 @@
 @import "bootstrap";
 @import "font-awesome";
 
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -24,6 +53,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-color: #f9fafc;
 }
 
 section {
@@ -75,6 +105,7 @@ tr:nth-child(odd) {
 
 aside {
   float:left;
+  border-right: 1px solid white;
 }
 
 section {
@@ -131,7 +162,8 @@ header .navbar-right {
     width:120px;
     border:1px solid #eee;
     float:left;
-    margin-left: 20px;
+    margin-left: 13px;
+    text-align: center;
 
     &:hover{
       background: #eee;

@@ -9,6 +9,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
+require 'factory_girl_rails'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -35,3 +36,14 @@ module Lunch
 end
 
 require Rails.root.join('lib/modules/omniauthable.rb').to_s
+
+ActionDispatch::Callbacks.after do
+  # Reload the factories
+  return unless (Rails.env.development? || Rails.env.test?)
+
+  unless FactoryGirl.factories.blank? # first init will load factories, this should only run on subsequent reloads
+    FactoryGirl.factories.clear
+    FactoryGirl.find_definitions
+  end
+
+end

@@ -4,7 +4,7 @@
   = f.input :email, required: true
   = f.input :password
   = f.input :password_confirmation
-  = f.input :name, label: 'First Name'
+  = f.input :first_name, label: 'First Name'
   = f.simple_fields_for :profile do |pf|
     .form-inputs
       = pf.input :last_name

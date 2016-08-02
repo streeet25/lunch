@@ -44,15 +44,12 @@ describe Admins::ProductsController do
     it "is should return http status succes" do
       @products1 = double(:build => "example")
       allow(@logged_in_user).to receive(:products) { @products }
-      get 'new'
+      get :new
       expect(response).to have_http_status(:ok)
     end
 
-    before(:each) do
-      get :new
-    end
-
     it "creates a new item" do
+      get :new
       expect(assigns(:product)).to be_a_new(Product)
     end
   end
@@ -122,34 +119,34 @@ describe Admins::ProductsController do
     end
   end
 
-    describe "put 'update'"  do
+   describe "put 'update'"  do
 
+    before do
+      @products = double
+      allow(@logged_in_user).to receive(:products) { @products }
+      allow(@products).to receive(:find) { product }
+    end
+
+    it 'should assigns product to instance variable' do
+      do_request
+      expect(assigns(:product)).to eq(product)
+    end
+
+    context "when product was updated" do
       before do
-        @products = double
-        allow(@logged_in_user).to receive(:products) { @products }
-        allow(@products).to receive(:find) { product }
+        allow(product).to receive(:update_attributes) { true }
       end
 
-      it 'should assigns product to instance variable' do
+      it 'should redirect to admins_products_path' do
         do_request
-        expect(assigns(:product)).to eq(product)
+        expect(response).to redirect_to(admins_products_path)
       end
 
-      context "when product was updated" do
-        before do
-          allow(product).to receive(:update_attributes) { true }
-        end
-
-        it 'should redirect to admins_products_path' do
-          do_request
-          expect(response).to redirect_to(admins_products_path)
-        end
-
-        it 'add message to notice' do
-          do_request
-          expect(flash[:success]).to eq('Product was successfully updated.')
-        end
+      it 'add message to notice' do
+        do_request
+        expect(flash[:success]).to eq('Product was successfully updated.')
       end
+    end
 
     context "when product wasn't updated" do
       before do

@@ -2,7 +2,7 @@ ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'webmock/rspec'
-
+require 'shoulda/matchers'
 require 'factory_girl_rails'
 
 
@@ -14,15 +14,13 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
-  config.mock_with :rspec do |mocks|
-    mocks.allow_message_expectations_on_nil = true
-  end
-
   config.order = "random"
   config.color = true
   config.formatter = 'NyanCatFormatter'
   config.include FactoryGirl::Syntax::Methods
   config.extend ControllerMacros, :type => :controller
+  config.include(Shoulda::Callback::Matchers::ActiveModel)
+  config.include Features::SessionHelpers, type: :feature
 
   config.expect_with :rspec do |expectations|
 
@@ -30,7 +28,7 @@ RSpec.configure do |config|
   end
 
   config.mock_with :rspec do |mocks|
-
+    mocks.allow_message_expectations_on_nil = true
     mocks.verify_partial_doubles = true
   end
 
@@ -44,6 +42,8 @@ Shoulda::Matchers.configure do |config|
     with.library :active_record
     with.library :action_controller
     with.library :active_model
+
+
   end
 end
   config.shared_context_metadata_behavior = :apply_to_host_groups

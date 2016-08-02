@@ -10,5 +10,23 @@
       = link_to edit_users_profile_path do
         %i.fa.fa-calendar
         %span Profile
+    - if current_user.try(:has_role?, :admin)
+      %li.header ADMIN NAVIGATION
+      %li
+        = link_to admins_orders_path do
+          %i.fa.fa-calendar
+          %span Orders
+      %li
+        = link_to admins_products_path do
+          %i.fa.fa-list
+          %span Products
+      %li
+        =link_to admins_users_path do
+          %i.fa.fa-users
+          %span Users
+      %li
+        = link_to admins_weekdays_path do
+          %i.fa.fa-calendar-check-o
+          %span Weekdays
 / /.sidebar
 / Content Wrapper. Contains page content

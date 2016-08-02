@@ -15,3 +15,4 @@
           - @order.products.where(category: category).each do |p|
             %td= p.name
         %td= @order.total
+= link_to "Dashboard", root_path, class: "btn btn-default"

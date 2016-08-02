@@ -1,9 +1,15 @@
-.col-md-12
-  - for i in 0..6
-    - weekdays = @date + i.day
-    = link_to users_orders_path(:weekday => weekdays.strftime("%d-%m-%Y")), class: "weekday" + (" weekday_active" if weekdays == Date.today).to_s do
-      .day
-      .panel-heading.date
-        = weekdays.strftime("%A")
-      .panel-body.wday
-        = weekdays.strftime("%d.%m.%Y")
+- @weekdays.each do |w|
+  -if w.date == Date.today
+    = link_to users_orders_path(:weekday => w.date) do
+      .weekday.weekday_active
+        = w.name
+        .day
+        .panel-body.wday
+          = w.date
+  -else
+    = link_to users_orders_path(:weekday => w.date) do
+      .weekday
+        = w.name
+        .day
+        .panel-body.wday
+          = w.date

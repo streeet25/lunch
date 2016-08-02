@@ -6,8 +6,8 @@
         = search_form_for @search, :url =>admins_orders_path do |f|
           %span Search by
           .field
-            = f.label :user_name_cont, "User name"
-            = f.text_field :user_name_cont, placeholder: "Jhon"
+            = f.label :user_first_name_cont, "User name"
+            = f.text_field :user_first_name_cont, placeholder: "Jhon"
             %br/
             = f.label :created_at_casted_date_equals, "Date"
             = f.text_field :created_at_casted_date_equals, placeholder: "yyyy-mm-dd"
@@ -21,7 +21,7 @@
           %thead
             %tr
               %th id
-              %th= sort_link @search, :user_name, "Username"
+              %th= sort_link @search, :user_first_name, "Username"
               %th= sort_link @search, :total, "Total"
               %th= sort_link @search, :created_at, "Created at"
               %th Actions
@@ -29,7 +29,7 @@
             - @orders.each do |o|
               %tr
                 %td= link_to o.id, admins_order_path(o)
-                %td= o.user.name
+                %td= o.user.first_name
                 %td= o.total
                 %td= o.created_at
                 %td

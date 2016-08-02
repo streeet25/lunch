@@ -1,7 +1,7 @@
 class Users::OrdersController < Users::BaseController
   def index
     @weekday = params[:weekday].to_date.strftime('%A') if params[:weekday]
-    @daymenu = Weekday.find_by_name(@weekday)
+    @daymenu = Weekday.find_by_date(params[:weekday])
     @date = params[:weekday]
   end
 
@@ -17,12 +17,13 @@ class Users::OrdersController < Users::BaseController
       redirect_to users_order_path(@order)
       flash[:success] = 'Your order successfully sent'
     else
-      render :new
       flash[:error] = 'Something goes wrong.'
+      render :new
     end
   end
 
   def show
     @order = current_user.orders.find(params[:id])
   end
+
 end

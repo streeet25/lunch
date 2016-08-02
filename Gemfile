@@ -57,6 +57,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'

@@ -27,8 +27,4 @@ class Order < ActiveRecord::Base
   def set_total!
     self.total = products.map(&:price).sum
   end
-
-  def self.total_orders(orders)
-    orders.map(&:total).sum if orders.present?
-  end
 end

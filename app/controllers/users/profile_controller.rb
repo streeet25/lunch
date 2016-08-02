@@ -5,6 +5,7 @@ class Users::ProfileController < Users::BaseController
   def update
     if current_user.update(user_params)
       redirect_to root_path
+      sign_in(current_user, bypass: true)
     else
       render :edit
     end

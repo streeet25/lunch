@@ -13,13 +13,15 @@
   %body.hold-transition.skin-red-light.sidebar-mini
   .wrapper
     = render 'layouts/partials/header'
-    - if current_user.try(:has_role?, :admin)
-      = render 'layouts/partials/sidebar_a'
-    - if current_user.try(:has_role?, :user)
+    - if signed_in?
       = render 'layouts/partials/sidebar_u'
     .content-wrapper
-      - flash.each do |key, value|
-        = content_tag(:div, value, class: "alert alert-#{key}")
-    %section
-      = yield
+    - if signed_in?
+      %section
+        = render 'layouts/partials/messages'
+        = yield
+    -else
+      .container
+        = render 'layouts/partials/messages'
+        = yield
 
