@@ -20,7 +20,7 @@ module Omniauthable
     def self.create_with_oauth(oauth_data)
       first_name, last_name = oauth_data.extra.raw_info.name.split(' ')
 
-      user = User.new(name: first_name, profile_attributes: { last_name: last_name })
+      user = User.new(first_name: first_name, profile_attributes: { last_name: last_name })
       user.social_login = true
 
       user.save!
