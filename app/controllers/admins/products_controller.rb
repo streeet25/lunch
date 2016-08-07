@@ -3,7 +3,7 @@ class Admins::ProductsController <  Admins::BaseController
   PER_PAGE = 10
 
   def index
-    @products = Product.order(:category_id).page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @products = Product.order(:category_id).page(params[:page]).per(params[:per_page] || PER_PAGE).includes(:category)
   end
 
   def new

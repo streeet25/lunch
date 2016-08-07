@@ -4,7 +4,7 @@ class Admins::UsersController < Admins::BaseController
   PER_PAGE = 10
 
   def index
-    @users = User.all.page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @users = User.all.page(params[:page]).per(params[:per_page] || PER_PAGE).includes(:profile)
   end
 
   def edit

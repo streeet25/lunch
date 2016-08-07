@@ -1,15 +1,7 @@
 - @weekdays.each do |w|
-  -if w.date == Date.today
-    = link_to users_orders_path(:weekday => w.date) do
-      .weekday.weekday_active
-        = w.name
-        .day
-        .panel-body.wday
-          = w.date
-  -else
-    = link_to users_orders_path(:weekday => w.date) do
-      .weekday
-        = w.name
-        .day
-        .panel-body.wday
-          = w.date
+  = link_to users_orders_path(:weekday => w.date) do
+    .weekday{:class => ("weekday_active" if w.date == Date.today)}
+      = w.name
+      .day
+      .panel-body.wday
+        = w.date
