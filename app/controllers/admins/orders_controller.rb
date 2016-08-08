@@ -1,5 +1,5 @@
 class Admins::OrdersController < Admins::BaseController
-  before_action :find_order , only: [:show, :destroy]
+  before_action :find_order, only: [:show, :destroy]
 
   PER_PAGE = 10
 
@@ -22,5 +22,4 @@ class Admins::OrdersController < Admins::BaseController
   def find_order
     @order = Order.find(params[:id])
   end
-
 end

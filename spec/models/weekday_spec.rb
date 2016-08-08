@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Weekday do
-  let(:weekday) {  build(:weekday) }
+  let(:weekday) { build(:weekday) }
 
   subject { weekday }
 
@@ -14,5 +14,4 @@ describe Weekday do
     it { should be_valid }
     it { should validate_presence_of(:name) }
   end
-
 end

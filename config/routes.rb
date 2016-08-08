@@ -1,11 +1,11 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'omniauth_callbacks' }
 
   root 'dashboard#index'
 
-  resource :dashboard, only: [:index,:show], controller: :dashboard
+  resource :dashboard, only: [:index, :show], controller: :dashboard
 
   namespace :users do
     resource    :profile, only: [:edit, :update], controller: :profile

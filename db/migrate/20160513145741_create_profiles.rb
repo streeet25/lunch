@@ -1,8 +1,8 @@
 class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
-    	t.integer :user_id
-    	t.string   :last_name
+      t.integer :user_id
+      t.string :last_name
 
       t.timestamps null: false
     end

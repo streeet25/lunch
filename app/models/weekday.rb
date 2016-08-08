@@ -5,6 +5,10 @@ class Weekday < ActiveRecord::Base
   has_many :products, through: :product_weekdays, dependent: :destroy
 
   validates :name, presence: true
+  validate :check_date
+
+  def check_date
+  end
 
   def self.find_products(category)
     date = DateTime.now.to_date.strftime('%A')

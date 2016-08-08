@@ -15,5 +15,4 @@ describe Organization do
   end
 
   it { should respond_to(:name) }
-
 end

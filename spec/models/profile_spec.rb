@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Profile do
-  let(:profile) {  build(:profile) }
+  let(:profile) { build(:profile) }
 
   subject { profile }
 
@@ -13,6 +13,4 @@ describe Profile do
     it { should be_valid }
     it { should validate_presence_of(:last_name) }
   end
-
-
 end

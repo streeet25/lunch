@@ -1,5 +1,5 @@
-class Admins::ProductsController <  Admins::BaseController
-  before_action :find_product , only: [:edit, :update, :destroy]
+class Admins::ProductsController < Admins::BaseController
+  before_action :find_product, only: [:edit, :update, :destroy]
   PER_PAGE = 10
 
   def index
@@ -26,7 +26,6 @@ class Admins::ProductsController <  Admins::BaseController
   end
 
   def update
-
     if @product.update(product_params)
       redirect_to admins_products_path
       flash[:success] = 'Product was successfully updated.'

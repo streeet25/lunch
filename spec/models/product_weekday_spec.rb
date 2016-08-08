@@ -10,5 +10,4 @@ describe ProductWeekday do
 
   it { should belong_to(:product) }
   it { should belong_to(:weekday) }
-
 end

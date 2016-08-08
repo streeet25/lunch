@@ -5,13 +5,12 @@ describe Order do
   let(:date) { Date.today }
   let(:order) { FactoryGirl.create(:order, created_at: date) }
   let(:categories) { create_list(:category, 3) }
-  let(:products) {  create_list(:product, 3) }
+  let(:products) { create_list(:product, 3) }
 
   subject { order }
 
   it { should respond_to(:user_id) }
   it { should respond_to(:total) }
-
 
   it { should be_valid }
 

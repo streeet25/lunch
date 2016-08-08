@@ -34,10 +34,10 @@ class Api::V1::AuthTokensController < ActionController::Base
 
   def google
     @google = Signet::OAuth2::Client.new do |config|
-        config.consumer_key        = ENV['google_token']
-        config.consumer_secret     = ENV['google_key']
-        config.access_token        = params[:access_token]
-        config.access_token_secret = params[:secret_key]
-      end
+      config.consumer_key = ENV['google_token']
+      config.consumer_secret     = ENV['google_key']
+      config.access_token        = params[:access_token]
+      config.access_token_secret = params[:secret_key]
+    end
   end
 end

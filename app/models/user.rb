@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:google_oauth2]
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one :profile, dependent: :destroy
 
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-   delegate :last_name, to: :profile, allow_nil: true, controller: :profile
+  delegate :last_name, to: :profile, allow_nil: true, controller: :profile
 
   validates :first_name, presence: true
 
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   def assign_role!
     # first user - Lunch Admin
-    if User.count==1
+    if User.count == 1
       add_role(:admin)
     else
       add_role(:user)

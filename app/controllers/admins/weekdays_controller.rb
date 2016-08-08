@@ -1,5 +1,5 @@
-class Admins::WeekdaysController <  Admins::BaseController
-  before_action :find_weekday , only: [:edit, :update, :destroy, :show]
+class Admins::WeekdaysController < Admins::BaseController
+  before_action :find_weekday, only: [:edit, :update, :destroy, :show]
 
   def index
     @weekdays = Weekday.order(:id)
@@ -12,7 +12,7 @@ class Admins::WeekdaysController <  Admins::BaseController
   def create
     @weekday = Weekday.new(weekday_params)
     if @weekday.save
-      flash[:success] = "Weekday created."
+      flash[:success] = 'Weekday created.'
       redirect_to admins_weekdays_path
     else
       flash[:error] = 'Something goes wrong.'
@@ -21,11 +21,9 @@ class Admins::WeekdaysController <  Admins::BaseController
   end
 
   def edit
-
   end
 
   def update
-
     if @weekday.update(weekday_params)
       redirect_to admins_weekdays_path
       flash[:success] = 'Weekday was successfully updated.'
@@ -42,7 +40,6 @@ class Admins::WeekdaysController <  Admins::BaseController
   end
 
   def show
-
   end
 
   private

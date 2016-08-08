@@ -102,7 +102,8 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'a868c9d21c0fb29c77b19fa80283ea92206707e739548d5fe75a8a72231be35959751c0c51218cc989bcbe49d79ed7b18a37cbe293dbb2d9207529b59036b114'
+  # config.pepper = 'a868c9d21c0fb29c77b19fa80283ea92206707e739548d5fe75a8
+  # a72231be35959751c0c51218cc989bcbe49d79ed7b18a37cbe293dbb2d9207529b59036b114'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -150,7 +151,8 @@ Devise.setup do |config|
   # Range for password length.
   config.password_length = 6..128
 
-  # Email regex used to validate email formats. It simply asserts that
+  # Email regex used to validate email formats.
+  # It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
@@ -265,5 +267,5 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  #config.omniauth :google_oauth2, "google_token", "google_key", { }
+  # config.omniauth :google_oauth2, "google_token", "google_key", { }
 end

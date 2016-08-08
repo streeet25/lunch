@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 feature 'Weekdays' do
-
   let(:admin) { FactoryGirl.create(:admin) }
   let!(:weekday) { FactoryGirl.create(:weekday) }
 
@@ -30,7 +29,6 @@ feature 'Weekdays' do
 
     it { expect(page).to have_content('New weekday') }
     it { expect(page).to have_button('Save') }
-
 
     scenario 'with valid information' do
       fill_in 'weekday[name]', with: 'Monday'
@@ -72,5 +70,3 @@ feature 'Weekdays' do
     end
   end
 end
-
-

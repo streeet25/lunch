@@ -24,7 +24,7 @@ gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 
-gem "rolify",        :git => "git://github.com/EppO/rolify.git"
+gem 'rolify', git: 'git://github.com/EppO/rolify.git'
 
 gem 'font-awesome-rails'
 
@@ -62,11 +62,8 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'nyan-cat-formatter'
   gem 'webmock'
   gem 'shoulda-matchers', '~> 3.1'
 end
-
-
-

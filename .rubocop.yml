@@ -1,0 +1,36 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Exclude:
+    - 'config/initializers/*'
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'bin/*'
+    - 'spec/**/*'
+    - 'db/*'
+    - 'app/models/ability.rb'
+  TargetRubyVersion: 2.2
+  DisplayCopNames: true
+
+Style/Encoding:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Style/ParallelAssignment:
+  Enabled: false  
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 150
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20

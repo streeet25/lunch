@@ -27,7 +27,6 @@ describe 'User', type: :feature do
         expect(current_path).to eql('/users/sign_in')
       end
     end
-
   end
 
   feature 'Sign in' do
@@ -53,20 +52,18 @@ describe 'User', type: :feature do
     end
   end
 
-
   feature 'Profile' do
-      before do
-        login(user.email, user.password)
-        visit edit_users_profile_path
-      end
+    before do
+      login(user.email, user.password)
+      visit edit_users_profile_path
+    end
 
-      scenario 'check information' do
-        expect(page).to have_content(user.first_name)
-      end
+    scenario 'check information' do
+      expect(page).to have_content(user.first_name)
+    end
   end
 
   feature 'User edit profile' do
-
     before (:each) do
       @user = FactoryGirl.create(:user, first_name: 'Example', email: 'example.@gmail.com', password: '123456', password_confirmation: '123456')
     end
@@ -111,4 +108,3 @@ describe 'User', type: :feature do
     end
   end
 end
-

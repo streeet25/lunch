@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   has_many :order_items
-  has_many  :products, through: :order_items, dependent: :destroy
+  has_many :products, through: :order_items, dependent: :destroy
 
   before_create :set_total!
 
@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
     end
   end
 
-  ransacker :created_at_casted do |parent|
+  ransacker :created_at_casted do |_parent|
     Arel.sql('date(orders.created_at)')
   end
 

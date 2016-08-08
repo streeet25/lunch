@@ -25,5 +25,4 @@ class Users::OrdersController < Users::BaseController
   def show
     @order = current_user.orders.find(params[:id])
   end
-
 end

@@ -15,6 +15,4 @@ describe Category do
   end
 
   it { should respond_to(:name) }
-
-
 end

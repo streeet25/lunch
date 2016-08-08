@@ -1,5 +1,5 @@
 class Admins::UsersController < Admins::BaseController
-  before_action :find_user , only: [:edit, :update, :destroy]
+  before_action :find_user, only: [:edit, :update, :destroy]
 
   PER_PAGE = 10
 

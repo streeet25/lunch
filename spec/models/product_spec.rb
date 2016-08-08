@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Product do
-  let(:product) {  build(:product) }
+  let(:product) { build(:product) }
 
   subject { product }
 
@@ -22,5 +22,4 @@ describe Product do
     it { should validate_presence_of(:category) }
     it { should delegate_method(:name).to(:category).with_prefix(true) }
   end
-
 end
